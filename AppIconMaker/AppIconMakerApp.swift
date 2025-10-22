@@ -12,6 +12,7 @@ struct AppIconMakerApp: App {
     var body: some Scene {
         WindowGroup {
             ContentView()
+                .frame(idealWidth: 100, idealHeight: 100)
         }
     }
 }
