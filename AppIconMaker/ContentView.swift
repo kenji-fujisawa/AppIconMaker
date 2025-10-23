@@ -15,49 +15,18 @@ struct ContentView: View {
     }
     
     @State private var image: NSImage? = nil
-    @State private var showImporter: Bool = false
     @State private var showExporter: Bool = false
     @State private var platform: Platform = .ios
-    
-    let maxWidth: CGFloat = 300
-    let maxHeight: CGFloat = 300
+    @StateObject private var symbolModel = SFSymbolViewModel()
     
     var body: some View {
         VStack {
-            Group {
-                if let image = image {
-                    Image(nsImage: image)
-                        .resizable()
-                        .scaledToFit()
-                        .frame(maxWidth: maxWidth, maxHeight: maxHeight)
-                        .onTapGesture {
-                            showImporter = true
-                        }
-                } else {
-                    Button {
-                        showImporter = true
-                    } label: {
-                        VStack {
-                            Image(systemName: "plus.square.dashed")
-                                .font(.largeTitle)
-                            Text("画像ファイルを選択")
-                                .font(.caption)
-                        }
-                    }
-                    .buttonStyle(.borderless)
-                    .frame(width: maxWidth, height: maxHeight)
+            TabView {
+                Tab("画像ファイル", systemImage: "photo") {
+                    ImageView(image: $image)
                 }
-            }
-            .fileImporter(isPresented: $showImporter, allowedContentTypes: [.png, .jpeg], allowsMultipleSelection: false) { result in
-                switch result {
-                case .success(let urls):
-                    if let url = urls.first {
-                        guard url.startAccessingSecurityScopedResource() else { return }
-                        image = NSImage(contentsOf: url)
-                        url.stopAccessingSecurityScopedResource()
-                    }
-                case .failure(let error):
-                    print(error)
+                Tab("SFシンボル", systemImage: "line.3.horizontal.decrease.circle") {
+                    SFSymbolView(image: $image, model: symbolModel)
                 }
             }
             
