@@ -6,27 +6,8 @@
 	objectVersion = 77;
 	objects = {
 
-/* Begin PBXContainerItemProxy section */
-		CADBC5AC2EA74E5400E7DB2E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CADBC5952EA74E5300E7DB2E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CADBC59C2EA74E5300E7DB2E;
-			remoteInfo = AppIconMaker;
-		};
-		CADBC5B62EA74E5400E7DB2E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CADBC5952EA74E5300E7DB2E /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = CADBC59C2EA74E5300E7DB2E;
-			remoteInfo = AppIconMaker;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		CADBC59D2EA74E5300E7DB2E /* AppIconMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = AppIconMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		CADBC5AB2EA74E5400E7DB2E /* AppIconMakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppIconMakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		CADBC5B52EA74E5400E7DB2E /* AppIconMakerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AppIconMakerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -35,34 +16,10 @@
 			path = AppIconMaker;
 			sourceTree = "<group>";
 		};
-		CADBC5AE2EA74E5400E7DB2E /* AppIconMakerTests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = AppIconMakerTests;
-			sourceTree = "<group>";
-		};
-		CADBC5B82EA74E5400E7DB2E /* AppIconMakerUITests */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = AppIconMakerUITests;
-			sourceTree = "<group>";
-		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		CADBC59A2EA74E5300E7DB2E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CADBC5A82EA74E5400E7DB2E /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CADBC5B22EA74E5400E7DB2E /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -76,8 +33,6 @@
 			isa = PBXGroup;
 			children = (
 				CADBC59F2EA74E5300E7DB2E /* AppIconMaker */,
-				CADBC5AE2EA74E5400E7DB2E /* AppIconMakerTests */,
-				CADBC5B82EA74E5400E7DB2E /* AppIconMakerUITests */,
 				CADBC59E2EA74E5300E7DB2E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -86,8 +41,6 @@
 			isa = PBXGroup;
 			children = (
 				CADBC59D2EA74E5300E7DB2E /* AppIconMaker.app */,
-				CADBC5AB2EA74E5400E7DB2E /* AppIconMakerTests.xctest */,
-				CADBC5B52EA74E5400E7DB2E /* AppIconMakerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,52 +70,6 @@
 			productReference = CADBC59D2EA74E5300E7DB2E /* AppIconMaker.app */;
 			productType = "com.apple.product-type.application";
 		};
-		CADBC5AA2EA74E5400E7DB2E /* AppIconMakerTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CADBC5C22EA74E5400E7DB2E /* Build configuration list for PBXNativeTarget "AppIconMakerTests" */;
-			buildPhases = (
-				CADBC5A72EA74E5400E7DB2E /* Sources */,
-				CADBC5A82EA74E5400E7DB2E /* Frameworks */,
-				CADBC5A92EA74E5400E7DB2E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CADBC5AD2EA74E5400E7DB2E /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				CADBC5AE2EA74E5400E7DB2E /* AppIconMakerTests */,
-			);
-			name = AppIconMakerTests;
-			packageProductDependencies = (
-			);
-			productName = AppIconMakerTests;
-			productReference = CADBC5AB2EA74E5400E7DB2E /* AppIconMakerTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		CADBC5B42EA74E5400E7DB2E /* AppIconMakerUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = CADBC5C52EA74E5400E7DB2E /* Build configuration list for PBXNativeTarget "AppIconMakerUITests" */;
-			buildPhases = (
-				CADBC5B12EA74E5400E7DB2E /* Sources */,
-				CADBC5B22EA74E5400E7DB2E /* Frameworks */,
-				CADBC5B32EA74E5400E7DB2E /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				CADBC5B72EA74E5400E7DB2E /* PBXTargetDependency */,
-			);
-			fileSystemSynchronizedGroups = (
-				CADBC5B82EA74E5400E7DB2E /* AppIconMakerUITests */,
-			);
-			name = AppIconMakerUITests;
-			packageProductDependencies = (
-			);
-			productName = AppIconMakerUITests;
-			productReference = CADBC5B52EA74E5400E7DB2E /* AppIconMakerUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -175,14 +82,6 @@
 				TargetAttributes = {
 					CADBC59C2EA74E5300E7DB2E = {
 						CreatedOnToolsVersion = 16.4;
-					};
-					CADBC5AA2EA74E5400E7DB2E = {
-						CreatedOnToolsVersion = 16.4;
-						TestTargetID = CADBC59C2EA74E5300E7DB2E;
-					};
-					CADBC5B42EA74E5400E7DB2E = {
-						CreatedOnToolsVersion = 16.4;
-						TestTargetID = CADBC59C2EA74E5300E7DB2E;
 					};
 				};
 			};
@@ -201,28 +100,12 @@
 			projectRoot = "";
 			targets = (
 				CADBC59C2EA74E5300E7DB2E /* AppIconMaker */,
-				CADBC5AA2EA74E5400E7DB2E /* AppIconMakerTests */,
-				CADBC5B42EA74E5400E7DB2E /* AppIconMakerUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		CADBC59B2EA74E5300E7DB2E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CADBC5A92EA74E5400E7DB2E /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CADBC5B32EA74E5400E7DB2E /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -239,34 +122,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		CADBC5A72EA74E5400E7DB2E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CADBC5B12EA74E5400E7DB2E /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		CADBC5AD2EA74E5400E7DB2E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CADBC59C2EA74E5300E7DB2E /* AppIconMaker */;
-			targetProxy = CADBC5AC2EA74E5400E7DB2E /* PBXContainerItemProxy */;
-		};
-		CADBC5B72EA74E5400E7DB2E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = CADBC59C2EA74E5300E7DB2E /* AppIconMaker */;
-			targetProxy = CADBC5B62EA74E5400E7DB2E /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		CADBC5BD2EA74E5400E7DB2E /* Debug */ = {
@@ -393,6 +249,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -412,10 +269,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
 				XROS_DEPLOYMENT_TARGET = 2.5;
 			};
 			name = Debug;
@@ -430,6 +287,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.utilities";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -449,96 +307,10 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				REGISTER_APP_GROUPS = YES;
 				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
+				SUPPORTED_PLATFORMS = macosx;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				XROS_DEPLOYMENT_TARGET = 2.5;
-			};
-			name = Release;
-		};
-		CADBC5C32EA74E5400E7DB2E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
-				MACOSX_DEPLOYMENT_TARGET = 15.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.uhimania.AppIconMakerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppIconMaker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AppIconMaker";
-				XROS_DEPLOYMENT_TARGET = 2.5;
-			};
-			name = Debug;
-		};
-		CADBC5C42EA74E5400E7DB2E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
-				MACOSX_DEPLOYMENT_TARGET = 15.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.uhimania.AppIconMakerTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/AppIconMaker.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/AppIconMaker";
-				XROS_DEPLOYMENT_TARGET = 2.5;
-			};
-			name = Release;
-		};
-		CADBC5C62EA74E5400E7DB2E /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
-				MACOSX_DEPLOYMENT_TARGET = 15.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.uhimania.AppIconMakerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_TARGET_NAME = AppIconMaker;
-				XROS_DEPLOYMENT_TARGET = 2.5;
-			};
-			name = Debug;
-		};
-		CADBC5C72EA74E5400E7DB2E /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				GENERATE_INFOPLIST_FILE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 18.5;
-				MACOSX_DEPLOYMENT_TARGET = 15.5;
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jp.uhimania.AppIconMakerUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = auto;
-				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator macosx xros xrsimulator";
-				SWIFT_EMIT_LOC_STRINGS = NO;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2,7";
-				TEST_TARGET_NAME = AppIconMaker;
 				XROS_DEPLOYMENT_TARGET = 2.5;
 			};
 			name = Release;
@@ -560,24 +332,6 @@
 			buildConfigurations = (
 				CADBC5C02EA74E5400E7DB2E /* Debug */,
 				CADBC5C12EA74E5400E7DB2E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CADBC5C22EA74E5400E7DB2E /* Build configuration list for PBXNativeTarget "AppIconMakerTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CADBC5C32EA74E5400E7DB2E /* Debug */,
-				CADBC5C42EA74E5400E7DB2E /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		CADBC5C52EA74E5400E7DB2E /* Build configuration list for PBXNativeTarget "AppIconMakerUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				CADBC5C62EA74E5400E7DB2E /* Debug */,
-				CADBC5C72EA74E5400E7DB2E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

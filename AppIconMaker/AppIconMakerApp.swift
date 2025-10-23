@@ -13,6 +13,14 @@ struct AppIconMakerApp: App {
         WindowGroup {
             ContentView()
                 .frame(idealWidth: 100, idealHeight: 100)
+                .onDisappear() {
+                    NSApplication.shared.terminate(nil)
+                }
+        }
+        .commands {
+            CommandGroup(replacing: .newItem) {}
+            CommandGroup(replacing: .pasteboard) {}
+            CommandGroup(replacing: .undoRedo) {}
         }
     }
 }
