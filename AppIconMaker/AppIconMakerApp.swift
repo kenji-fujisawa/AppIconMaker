@@ -17,5 +17,10 @@ struct AppIconMakerApp: App {
                     NSApplication.shared.terminate(nil)
                 }
         }
+        .commands {
+            CommandGroup(replacing: .newItem) {}
+            CommandGroup(replacing: .pasteboard) {}
+            CommandGroup(replacing: .undoRedo) {}
+        }
     }
 }
