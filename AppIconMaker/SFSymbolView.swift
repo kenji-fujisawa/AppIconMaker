@@ -10,13 +10,15 @@ import SwiftUI
 class SFSymbolViewModel: ObservableObject {
     @Published var selected: String
     @Published var filter: String
+    @Published var monochrome: Bool
     @Published var palette1: Color
     @Published var palette2: Color
     @Published var palette3: Color
     
-    init(selected: String = "", filter: String = "", palette1: Color = .black, palette2: Color = .black, palette3: Color = .black) {
+    init(selected: String = "", filter: String = "", monochrome: Bool = true, palette1: Color = .black, palette2: Color = .black, palette3: Color = .black) {
         self.selected = selected
         self.filter = filter
+        self.monochrome = monochrome
         self.palette1 = palette1
         self.palette2 = palette2
         self.palette3 = palette3
@@ -57,17 +59,31 @@ struct SFSymbolView: View {
                 
                 Spacer()
                 
+                Toggle("単色", isOn: $model.monochrome)
+                    .toggleStyle(.switch)
                 ColorPicker("パレット 1", selection: $model.palette1)
                     .onChange(of: model.palette1) { _, _ in
                         updateImage()
+                        if model.monochrome {
+                            model.palette2 = model.palette1
+                            model.palette3 = model.palette1
+                        }
                     }
                 ColorPicker("パレット 2", selection: $model.palette2)
                     .onChange(of: model.palette2) { _, _ in
                         updateImage()
+                        if model.monochrome {
+                            model.palette1 = model.palette2
+                            model.palette3 = model.palette2
+                        }
                     }
                 ColorPicker("パレット 3", selection: $model.palette3)
                     .onChange(of: model.palette3) { _, _ in
                         updateImage()
+                        if model.monochrome {
+                            model.palette1 = model.palette3
+                            model.palette2 = model.palette3
+                        }
                     }
             }
             
