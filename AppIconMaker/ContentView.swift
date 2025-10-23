@@ -37,7 +37,7 @@ struct ContentView: View {
                     }
                 }
                 
-                Button("save") {
+                Button("アイコン作成") {
                     showExporter = true
                 }
                 .fileImporter(isPresented: $showExporter, allowedContentTypes: [.directory]) { result in
