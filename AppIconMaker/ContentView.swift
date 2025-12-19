@@ -11,6 +11,7 @@ struct ContentView: View {
     private enum Platform: String, CaseIterable {
         case ios = "iOS"
         case android = "Android"
+        case androidStudio = "Android Studio"
         case mac = "macOS"
     }
     
@@ -57,6 +58,7 @@ struct ContentView: View {
         switch platform {
         case .ios: exportIosIcons(url: url)
         case .android: exportAndroidIcons(url: url)
+        case .androidStudio: exportAndroidStudioIcons(url: url)
         case .mac: exportMacosIcons(url: url)
         }
     }
@@ -123,6 +125,22 @@ struct ContentView: View {
             try image?.resize(size: 192)?.data?.write(to: url.appendingPathComponent("mipmap-xxxhdpi/ic_launcher_round.png"))
             
             try image?.resize(size: 512)?.data?.write(to: url.appendingPathComponent("ic_launcher-playstore.png"))
+        } catch {
+            print(error)
+        }
+        
+        url.stopAccessingSecurityScopedResource()
+    }
+    
+    private func exportAndroidStudioIcons(url: URL) {
+        guard url.startAccessingSecurityScopedResource() else { return }
+        
+        do {
+            let fore = self.image?.cgImage?.resize(symbolSize: 625, imageSize: 1024)
+            let back = NSImage(size: NSSize(width: 1024, height: 1024)).fillBackground(NSColor(symbolModel.background)).cgImage
+            
+            try fore?.data?.write(to: url.appendingPathComponent("ic_launcher_foreground.png"))
+            try back?.data?.write(to: url.appendingPathComponent("ic_launcher_background.png"))
         } catch {
             print(error)
         }
