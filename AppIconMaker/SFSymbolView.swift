@@ -14,14 +14,16 @@ class SFSymbolViewModel: ObservableObject {
     @Published var palette1: Color
     @Published var palette2: Color
     @Published var palette3: Color
+    @Published var background: Color
     
-    init(selected: String = "", filter: String = "", monochrome: Bool = true, palette1: Color = .black, palette2: Color = .black, palette3: Color = .black) {
+    init(selected: String = "", filter: String = "", monochrome: Bool = true, palette1: Color = .black, palette2: Color = .black, palette3: Color = .black, background: Color = .clear) {
         self.selected = selected
         self.filter = filter
         self.monochrome = monochrome
         self.palette1 = palette1
         self.palette2 = palette2
         self.palette3 = palette3
+        self.background = background
     }
 }
 
@@ -55,36 +57,44 @@ struct SFSymbolView: View {
                     .scaledToFit()
                     .symbolRenderingMode(.palette)
                     .foregroundStyle(model.palette1, model.palette2, model.palette3)
+                    .background(model.background)
                     .frame(width: 100, height: 100)
                 
                 Spacer()
                 
                 Toggle("単色", isOn: $model.monochrome)
                     .toggleStyle(.switch)
-                ColorPicker("パレット 1", selection: $model.palette1)
-                    .onChange(of: model.palette1) { _, _ in
-                        updateImage()
-                        if model.monochrome {
-                            model.palette2 = model.palette1
-                            model.palette3 = model.palette1
+                
+                VStack(alignment: .trailing) {
+                    ColorPicker("パレット 1", selection: $model.palette1)
+                        .onChange(of: model.palette1) { _, _ in
+                            updateImage()
+                            if model.monochrome {
+                                model.palette2 = model.palette1
+                                model.palette3 = model.palette1
+                            }
                         }
-                    }
-                ColorPicker("パレット 2", selection: $model.palette2)
-                    .onChange(of: model.palette2) { _, _ in
-                        updateImage()
-                        if model.monochrome {
-                            model.palette1 = model.palette2
-                            model.palette3 = model.palette2
+                    ColorPicker("パレット 2", selection: $model.palette2)
+                        .onChange(of: model.palette2) { _, _ in
+                            updateImage()
+                            if model.monochrome {
+                                model.palette1 = model.palette2
+                                model.palette3 = model.palette2
+                            }
                         }
-                    }
-                ColorPicker("パレット 3", selection: $model.palette3)
-                    .onChange(of: model.palette3) { _, _ in
-                        updateImage()
-                        if model.monochrome {
-                            model.palette1 = model.palette3
-                            model.palette2 = model.palette3
+                    ColorPicker("パレット 3", selection: $model.palette3)
+                        .onChange(of: model.palette3) { _, _ in
+                            updateImage()
+                            if model.monochrome {
+                                model.palette1 = model.palette3
+                                model.palette2 = model.palette3
+                            }
                         }
-                    }
+                    ColorPicker("背景色", selection: $model.background)
+                        .onChange(of: model.background) { _, _ in
+                            updateImage()
+                        }
+                }
             }
             
             VStack {
@@ -113,8 +123,25 @@ struct SFSymbolView: View {
     private func updateImage() {
         var config = NSImage.SymbolConfiguration(pointSize: 1024, weight: .regular)
         config = config.applying(.init(paletteColors: [NSColor(model.palette1), NSColor(model.palette2), NSColor(model.palette3)]))
-        let img = NSImage(systemSymbolName: model.selected, accessibilityDescription: nil)
-        image = img?.withSymbolConfiguration(config)
+        var img = NSImage(systemSymbolName: model.selected, accessibilityDescription: nil)
+        img = img?.withSymbolConfiguration(config)
+        image = img?.withBackground(NSColor(model.background))
+    }
+}
+
+extension NSImage {
+    func withBackground(_ color: NSColor) -> NSImage {
+        let newImage = NSImage(size: self.size)
+        newImage.lockFocus()
+        
+        color.set()
+        let rect = NSRect(origin: .zero, size: self.size)
+        rect.fill()
+        
+        self.draw(in: rect)
+        
+        newImage.unlockFocus()
+        return newImage
     }
 }
 
