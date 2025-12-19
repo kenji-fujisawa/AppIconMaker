@@ -64,6 +64,12 @@ struct SFSymbolView: View {
                 
                 Toggle("単色", isOn: $model.monochrome)
                     .toggleStyle(.switch)
+                    .onChange(of: model.monochrome) { _, _ in
+                        if model.monochrome {
+                            model.palette2 = model.palette1
+                            model.palette3 = model.palette1
+                        }
+                    }
                 
                 VStack(alignment: .trailing) {
                     ColorPicker("パレット 1", selection: $model.palette1)
