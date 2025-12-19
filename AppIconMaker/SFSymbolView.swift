@@ -123,25 +123,8 @@ struct SFSymbolView: View {
     private func updateImage() {
         var config = NSImage.SymbolConfiguration(pointSize: 1024, weight: .regular)
         config = config.applying(.init(paletteColors: [NSColor(model.palette1), NSColor(model.palette2), NSColor(model.palette3)]))
-        var img = NSImage(systemSymbolName: model.selected, accessibilityDescription: nil)
-        img = img?.withSymbolConfiguration(config)
-        image = img?.withBackground(NSColor(model.background))
-    }
-}
-
-extension NSImage {
-    func withBackground(_ color: NSColor) -> NSImage {
-        let newImage = NSImage(size: self.size)
-        newImage.lockFocus()
-        
-        color.set()
-        let rect = NSRect(origin: .zero, size: self.size)
-        rect.fill()
-        
-        self.draw(in: rect)
-        
-        newImage.unlockFocus()
-        return newImage
+        let img = NSImage(systemSymbolName: model.selected, accessibilityDescription: nil)
+        image = img?.withSymbolConfiguration(config)
     }
 }
 

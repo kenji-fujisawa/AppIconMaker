@@ -65,22 +65,23 @@ struct ContentView: View {
         guard url.startAccessingSecurityScopedResource() else { return }
         
         do {
-            try image?.cgImage?.resize(size: 40)?.data?.write(to: url.appendingPathComponent("Icon-20@2x.png"))
-            try image?.cgImage?.resize(size: 60)?.data?.write(to: url.appendingPathComponent("Icon-20@3x.png"))
-            try image?.cgImage?.resize(size: 58)?.data?.write(to: url.appendingPathComponent("Icon-29@2x.png"))
-            try image?.cgImage?.resize(size: 87)?.data?.write(to: url.appendingPathComponent("Icon-29@3x.png"))
-            try image?.cgImage?.resize(size: 76)?.data?.write(to: url.appendingPathComponent("Icon-38@2x.png"))
-            try image?.cgImage?.resize(size: 114)?.data?.write(to: url.appendingPathComponent("Icon-38@3x.png"))
-            try image?.cgImage?.resize(size: 80)?.data?.write(to: url.appendingPathComponent("Icon-40@2x.png"))
-            try image?.cgImage?.resize(size: 120)?.data?.write(to: url.appendingPathComponent("Icon-40@3x.png"))
-            try image?.cgImage?.resize(size: 120)?.data?.write(to: url.appendingPathComponent("Icon-60@2x.png"))
-            try image?.cgImage?.resize(size: 180)?.data?.write(to: url.appendingPathComponent("Icon-60@3x.png"))
-            try image?.cgImage?.resize(size: 128)?.data?.write(to: url.appendingPathComponent("Icon-64@2x.png"))
-            try image?.cgImage?.resize(size: 192)?.data?.write(to: url.appendingPathComponent("Icon-64@3x.png"))
-            try image?.cgImage?.resize(size: 136)?.data?.write(to: url.appendingPathComponent("Icon-68@2x.png"))
-            try image?.cgImage?.resize(size: 152)?.data?.write(to: url.appendingPathComponent("Icon-76@2x.png"))
-            try image?.cgImage?.resize(size: 167)?.data?.write(to: url.appendingPathComponent("Icon-83.5@2x.png"))
-            try image?.cgImage?.resize(size: 1024)?.data?.write(to: url.appendingPathComponent("iTunesArtwork@2x.png"))
+            let image = self.image?.fillBackground(NSColor(symbolModel.background)).cgImage
+            try image?.resize(size: 40)?.data?.write(to: url.appendingPathComponent("Icon-20@2x.png"))
+            try image?.resize(size: 60)?.data?.write(to: url.appendingPathComponent("Icon-20@3x.png"))
+            try image?.resize(size: 58)?.data?.write(to: url.appendingPathComponent("Icon-29@2x.png"))
+            try image?.resize(size: 87)?.data?.write(to: url.appendingPathComponent("Icon-29@3x.png"))
+            try image?.resize(size: 76)?.data?.write(to: url.appendingPathComponent("Icon-38@2x.png"))
+            try image?.resize(size: 114)?.data?.write(to: url.appendingPathComponent("Icon-38@3x.png"))
+            try image?.resize(size: 80)?.data?.write(to: url.appendingPathComponent("Icon-40@2x.png"))
+            try image?.resize(size: 120)?.data?.write(to: url.appendingPathComponent("Icon-40@3x.png"))
+            try image?.resize(size: 120)?.data?.write(to: url.appendingPathComponent("Icon-60@2x.png"))
+            try image?.resize(size: 180)?.data?.write(to: url.appendingPathComponent("Icon-60@3x.png"))
+            try image?.resize(size: 128)?.data?.write(to: url.appendingPathComponent("Icon-64@2x.png"))
+            try image?.resize(size: 192)?.data?.write(to: url.appendingPathComponent("Icon-64@3x.png"))
+            try image?.resize(size: 136)?.data?.write(to: url.appendingPathComponent("Icon-68@2x.png"))
+            try image?.resize(size: 152)?.data?.write(to: url.appendingPathComponent("Icon-76@2x.png"))
+            try image?.resize(size: 167)?.data?.write(to: url.appendingPathComponent("Icon-83.5@2x.png"))
+            try image?.resize(size: 1024)?.data?.write(to: url.appendingPathComponent("iTunesArtwork@2x.png"))
         } catch {
             print(error)
         }
@@ -92,32 +93,36 @@ struct ContentView: View {
         guard url.startAccessingSecurityScopedResource() else { return }
         
         do {
+            let fore = self.image?.cgImage?.resize(symbolSize: 66, imageSize: 108)
+            let back = NSImage(size: NSSize(width: 108, height: 108)).fillBackground(NSColor(symbolModel.background)).cgImage
+            
+            try FileManager.default.createDirectory(at: url.appendingPathComponent("drawable", isDirectory: true), withIntermediateDirectories: true)
+            try fore?.data?.write(to: url.appendingPathComponent("drawable/ic_launcher_foreground.png"))
+            try back?.data?.write(to: url.appendingPathComponent("drawable/ic_launcher_background.png"))
+            
+            let image = self.image?.fillBackground(NSColor(symbolModel.background)).cgImage
+            
             try FileManager.default.createDirectory(at: url.appendingPathComponent("mipmap-mdpi", isDirectory: true), withIntermediateDirectories: true)
-            try image?.cgImage?.resize(size: 48)?.data?.write(to: url.appendingPathComponent("mipmap-mdpi/ic_launcher.png"))
-            try image?.cgImage?.resize(size: 48)?.data?.write(to: url.appendingPathComponent("mipmap-mdpi/ic_launcher_round.png"))
-            try image?.cgImage?.resize(size: 48)?.data?.write(to: url.appendingPathComponent("mipmap-mdpi/ic_launcher_foreground.png"))
+            try image?.resize(size: 48)?.data?.write(to: url.appendingPathComponent("mipmap-mdpi/ic_launcher.png"))
+            try image?.resize(size: 48)?.data?.write(to: url.appendingPathComponent("mipmap-mdpi/ic_launcher_round.png"))
             
             try FileManager.default.createDirectory(at: url.appendingPathComponent("mipmap-hdpi", isDirectory: true), withIntermediateDirectories: true)
-            try image?.cgImage?.resize(size: 72)?.data?.write(to: url.appendingPathComponent("mipmap-hdpi/ic_launcher.png"))
-            try image?.cgImage?.resize(size: 72)?.data?.write(to: url.appendingPathComponent("mipmap-hdpi/ic_launcher_round.png"))
-            try image?.cgImage?.resize(size: 72)?.data?.write(to: url.appendingPathComponent("mipmap-hdpi/ic_launcher_foreground.png"))
+            try image?.resize(size: 72)?.data?.write(to: url.appendingPathComponent("mipmap-hdpi/ic_launcher.png"))
+            try image?.resize(size: 72)?.data?.write(to: url.appendingPathComponent("mipmap-hdpi/ic_launcher_round.png"))
             
             try FileManager.default.createDirectory(at: url.appendingPathComponent("mipmap-xhdpi", isDirectory: true), withIntermediateDirectories: true)
-            try image?.cgImage?.resize(size: 96)?.data?.write(to: url.appendingPathComponent("mipmap-xhdpi/ic_launcher.png"))
-            try image?.cgImage?.resize(size: 96)?.data?.write(to: url.appendingPathComponent("mipmap-xhdpi/ic_launcher_round.png"))
-            try image?.cgImage?.resize(size: 96)?.data?.write(to: url.appendingPathComponent("mipmap-xhdpi/ic_launcher_foreground.png"))
+            try image?.resize(size: 96)?.data?.write(to: url.appendingPathComponent("mipmap-xhdpi/ic_launcher.png"))
+            try image?.resize(size: 96)?.data?.write(to: url.appendingPathComponent("mipmap-xhdpi/ic_launcher_round.png"))
             
             try FileManager.default.createDirectory(at: url.appendingPathComponent("mipmap-xxhdpi", isDirectory: true), withIntermediateDirectories: true)
-            try image?.cgImage?.resize(size: 144)?.data?.write(to: url.appendingPathComponent("mipmap-xxhdpi/ic_launcher.png"))
-            try image?.cgImage?.resize(size: 144)?.data?.write(to: url.appendingPathComponent("mipmap-xxhdpi/ic_launcher_round.png"))
-            try image?.cgImage?.resize(size: 144)?.data?.write(to: url.appendingPathComponent("mipmap-xxhdpi/ic_launcher_foreground.png"))
+            try image?.resize(size: 144)?.data?.write(to: url.appendingPathComponent("mipmap-xxhdpi/ic_launcher.png"))
+            try image?.resize(size: 144)?.data?.write(to: url.appendingPathComponent("mipmap-xxhdpi/ic_launcher_round.png"))
             
             try FileManager.default.createDirectory(at: url.appendingPathComponent("mipmap-xxxhdpi", isDirectory: true), withIntermediateDirectories: true)
-            try image?.cgImage?.resize(size: 192)?.data?.write(to: url.appendingPathComponent("mipmap-xxxhdpi/ic_launcher.png"))
-            try image?.cgImage?.resize(size: 192)?.data?.write(to: url.appendingPathComponent("mipmap-xxxhdpi/ic_launcher_round.png"))
-            try image?.cgImage?.resize(size: 192)?.data?.write(to: url.appendingPathComponent("mipmap-xxxhdpi/ic_launcher_foreground.png"))
+            try image?.resize(size: 192)?.data?.write(to: url.appendingPathComponent("mipmap-xxxhdpi/ic_launcher.png"))
+            try image?.resize(size: 192)?.data?.write(to: url.appendingPathComponent("mipmap-xxxhdpi/ic_launcher_round.png"))
             
-            try image?.cgImage?.resize(size: 512)?.data?.write(to: url.appendingPathComponent("ic_launcher-playstore.png"))
+            try image?.resize(size: 512)?.data?.write(to: url.appendingPathComponent("ic_launcher-playstore.png"))
         } catch {
             print(error)
         }
@@ -129,16 +134,17 @@ struct ContentView: View {
         guard url.startAccessingSecurityScopedResource() else { return }
         
         do {
-            try image?.cgImage?.resize(size: 16)?.data?.write(to: url.appendingPathComponent("Icon-16.png"))
-            try image?.cgImage?.resize(size: 32)?.data?.write(to: url.appendingPathComponent("Icon-16@2x.png"))
-            try image?.cgImage?.resize(size: 32)?.data?.write(to: url.appendingPathComponent("Icon-32.png"))
-            try image?.cgImage?.resize(size: 64)?.data?.write(to: url.appendingPathComponent("Icon-32@2x.png"))
-            try image?.cgImage?.resize(size: 128)?.data?.write(to: url.appendingPathComponent("Icon-128.png"))
-            try image?.cgImage?.resize(size: 256)?.data?.write(to: url.appendingPathComponent("Icon-128@2x.png"))
-            try image?.cgImage?.resize(size: 256)?.data?.write(to: url.appendingPathComponent("Icon-256.png"))
-            try image?.cgImage?.resize(size: 512)?.data?.write(to: url.appendingPathComponent("Icon-256@2x.png"))
-            try image?.cgImage?.resize(size: 512)?.data?.write(to: url.appendingPathComponent("Icon-512.png"))
-            try image?.cgImage?.resize(size: 1024)?.data?.write(to: url.appendingPathComponent("Icon-512@2x.png"))
+            let image = self.image?.fillBackground(NSColor(symbolModel.background)).cgImage
+            try image?.resize(size: 16)?.data?.write(to: url.appendingPathComponent("Icon-16.png"))
+            try image?.resize(size: 32)?.data?.write(to: url.appendingPathComponent("Icon-16@2x.png"))
+            try image?.resize(size: 32)?.data?.write(to: url.appendingPathComponent("Icon-32.png"))
+            try image?.resize(size: 64)?.data?.write(to: url.appendingPathComponent("Icon-32@2x.png"))
+            try image?.resize(size: 128)?.data?.write(to: url.appendingPathComponent("Icon-128.png"))
+            try image?.resize(size: 256)?.data?.write(to: url.appendingPathComponent("Icon-128@2x.png"))
+            try image?.resize(size: 256)?.data?.write(to: url.appendingPathComponent("Icon-256.png"))
+            try image?.resize(size: 512)?.data?.write(to: url.appendingPathComponent("Icon-256@2x.png"))
+            try image?.resize(size: 512)?.data?.write(to: url.appendingPathComponent("Icon-512.png"))
+            try image?.resize(size: 1024)?.data?.write(to: url.appendingPathComponent("Icon-512@2x.png"))
         } catch {
             print(error)
         }
@@ -152,6 +158,20 @@ extension NSImage {
         guard let imageData = self.tiffRepresentation else { return nil }
         guard let sourceData = CGImageSourceCreateWithData(imageData as CFData, nil) else { return nil }
         return CGImageSourceCreateImageAtIndex(sourceData, 0, nil)
+    }
+    
+    func fillBackground(_ color: NSColor) -> NSImage {
+        let newImage = NSImage(size: self.size)
+        newImage.lockFocus()
+        
+        color.set()
+        let rect = NSRect(origin: .zero, size: self.size)
+        rect.fill()
+        
+        self.draw(in: rect)
+        
+        newImage.unlockFocus()
+        return newImage
     }
 }
 
@@ -173,6 +193,23 @@ extension CGImage {
         guard let context = CGContext(data: nil, width: Int(size), height: Int(size), bitsPerComponent: self.bitsPerComponent, bytesPerRow: 0, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else { return nil }
         context.interpolationQuality = .high
         context.clear(CGRect(x: 0, y: 0, width: size, height: size))
+        context.draw(self, in: CGRect(x: offsetX, y: offsetY, width: newWidth, height: newHeight))
+        
+        return context.makeImage()
+    }
+    
+    func resize(symbolSize: CGFloat, imageSize: CGFloat) -> CGImage? {
+        let originalWidth = CGFloat(self.width)
+        let originalHeight = CGFloat(self.height)
+        let scale = min(symbolSize / originalWidth, symbolSize / originalHeight)
+        let newWidth = originalWidth * scale
+        let newHeight = originalHeight * scale
+        let offsetX = (imageSize - newWidth) / 2
+        let offsetY = (imageSize - newHeight) / 2
+        
+        guard let context = CGContext(data: nil, width: Int(imageSize), height: Int(imageSize), bitsPerComponent: self.bitsPerComponent, bytesPerRow: 0, space: CGColorSpaceCreateDeviceRGB(), bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue) else { return nil }
+        context.interpolationQuality = .high
+        context.clear(CGRect(x: 0, y: 0, width: imageSize, height: imageSize))
         context.draw(self, in: CGRect(x: offsetX, y: offsetY, width: newWidth, height: newHeight))
         
         return context.makeImage()
