@@ -11,7 +11,6 @@ struct ContentView: View {
     private enum Platform: String, CaseIterable {
         case ios = "iOS"
         case android = "Android"
-        case androidStudio = "Android Studio"
         case mac = "macOS"
     }
     
@@ -58,7 +57,6 @@ struct ContentView: View {
         switch platform {
         case .ios: exportIosIcons(url: url)
         case .android: exportAndroidIcons(url: url)
-        case .androidStudio: exportAndroidStudioIcons(url: url)
         case .mac: exportMacosIcons(url: url)
         }
     }
@@ -95,52 +93,43 @@ struct ContentView: View {
         guard url.startAccessingSecurityScopedResource() else { return }
         
         do {
-            let fore = self.image?.cgImage?.resize(symbolSize: 66, imageSize: 108)
-            let back = NSImage(size: NSSize(width: 108, height: 108)).fillBackground(NSColor(symbolModel.background)).cgImage
-            
-            try FileManager.default.createDirectory(at: url.appendingPathComponent("drawable", isDirectory: true), withIntermediateDirectories: true)
-            try fore?.data?.write(to: url.appendingPathComponent("drawable/ic_launcher_foreground.png"))
-            try back?.data?.write(to: url.appendingPathComponent("drawable/ic_launcher_background.png"))
-            
             let image = self.image?.fillBackground(NSColor(symbolModel.background)).cgImage
+            let fore = self.image?.cgImage?.resize(symbolSize: 625, imageSize: 1024)
+            let back = NSImage(size: NSSize(width: 1024, height: 1024)).fillBackground(NSColor(symbolModel.background)).cgImage
             
             try FileManager.default.createDirectory(at: url.appendingPathComponent("mipmap-mdpi", isDirectory: true), withIntermediateDirectories: true)
             try image?.resize(size: 48)?.data?.write(to: url.appendingPathComponent("mipmap-mdpi/ic_launcher.png"))
             try image?.resize(size: 48)?.data?.write(to: url.appendingPathComponent("mipmap-mdpi/ic_launcher_round.png"))
+            try fore?.resize(size: 108)?.data?.write(to: url.appendingPathComponent("mipmap-mdpi/ic_launcher_foreground.png"))
+            try back?.resize(size: 108)?.data?.write(to: url.appendingPathComponent("mipmap-mdpi/ic_launcher_background.png"))
             
             try FileManager.default.createDirectory(at: url.appendingPathComponent("mipmap-hdpi", isDirectory: true), withIntermediateDirectories: true)
             try image?.resize(size: 72)?.data?.write(to: url.appendingPathComponent("mipmap-hdpi/ic_launcher.png"))
             try image?.resize(size: 72)?.data?.write(to: url.appendingPathComponent("mipmap-hdpi/ic_launcher_round.png"))
+            try fore?.resize(size: 162)?.data?.write(to: url.appendingPathComponent("mipmap-hdpi/ic_launcher_foreground.png"))
+            try back?.resize(size: 162)?.data?.write(to: url.appendingPathComponent("mipmap-hdpi/ic_launcher_background.png"))
             
             try FileManager.default.createDirectory(at: url.appendingPathComponent("mipmap-xhdpi", isDirectory: true), withIntermediateDirectories: true)
             try image?.resize(size: 96)?.data?.write(to: url.appendingPathComponent("mipmap-xhdpi/ic_launcher.png"))
             try image?.resize(size: 96)?.data?.write(to: url.appendingPathComponent("mipmap-xhdpi/ic_launcher_round.png"))
+            try fore?.resize(size: 216)?.data?.write(to: url.appendingPathComponent("mipmap-xhdpi/ic_launcher_foreground.png"))
+            try back?.resize(size: 216)?.data?.write(to: url.appendingPathComponent("mipmap-xhdpi/ic_launcher_background.png"))
             
             try FileManager.default.createDirectory(at: url.appendingPathComponent("mipmap-xxhdpi", isDirectory: true), withIntermediateDirectories: true)
             try image?.resize(size: 144)?.data?.write(to: url.appendingPathComponent("mipmap-xxhdpi/ic_launcher.png"))
             try image?.resize(size: 144)?.data?.write(to: url.appendingPathComponent("mipmap-xxhdpi/ic_launcher_round.png"))
+            try fore?.resize(size: 324)?.data?.write(to: url.appendingPathComponent("mipmap-xxhdpi/ic_launcher_foreground.png"))
+            try back?.resize(size: 324)?.data?.write(to: url.appendingPathComponent("mipmap-xxhdpi/ic_launcher_background.png"))
             
             try FileManager.default.createDirectory(at: url.appendingPathComponent("mipmap-xxxhdpi", isDirectory: true), withIntermediateDirectories: true)
             try image?.resize(size: 192)?.data?.write(to: url.appendingPathComponent("mipmap-xxxhdpi/ic_launcher.png"))
             try image?.resize(size: 192)?.data?.write(to: url.appendingPathComponent("mipmap-xxxhdpi/ic_launcher_round.png"))
+            try fore?.resize(size: 432)?.data?.write(to: url.appendingPathComponent("mipmap-xxxhdpi/ic_launcher_foreground.png"))
+            try back?.resize(size: 432)?.data?.write(to: url.appendingPathComponent("mipmap-xxxhdpi/ic_launcher_background.png"))
             
             try image?.resize(size: 512)?.data?.write(to: url.appendingPathComponent("ic_launcher-playstore.png"))
-        } catch {
-            print(error)
-        }
-        
-        url.stopAccessingSecurityScopedResource()
-    }
-    
-    private func exportAndroidStudioIcons(url: URL) {
-        guard url.startAccessingSecurityScopedResource() else { return }
-        
-        do {
-            let fore = self.image?.cgImage?.resize(symbolSize: 625, imageSize: 1024)
-            let back = NSImage(size: NSSize(width: 1024, height: 1024)).fillBackground(NSColor(symbolModel.background)).cgImage
-            
-            try fore?.data?.write(to: url.appendingPathComponent("ic_launcher_foreground.png"))
-            try back?.data?.write(to: url.appendingPathComponent("ic_launcher_background.png"))
+            try fore?.resize(size: 1024)?.data?.write(to: url.appendingPathComponent("ic_launcher_foreground.png"))
+            try back?.resize(size: 1024)?.data?.write(to: url.appendingPathComponent("ic_launcher_background.png"))
         } catch {
             print(error)
         }
