@@ -101,6 +101,14 @@ struct SFSymbolView: View {
                             updateImage()
                         }
                 }
+                
+                Button("リセット") {
+                    model.monochrome = true
+                    model.palette1 = .black
+                    model.palette2 = .black
+                    model.palette3 = .black
+                    model.background = .clear
+                }
             }
             
             VStack {
